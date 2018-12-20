@@ -90,7 +90,7 @@ LocationManager.prototype.setDelegate = function(newDelegate) {
  * @returns {Q.Promise}
  */
 LocationManager.prototype._registerDelegateCallbackId = function () {
-	this.appendToDeviceLog('registerDelegateCallbackId()');
+	// this.appendToDeviceLog('registerDelegateCallbackId()');
 	var d = Q.defer();
 
 	exec(_.bind(this._onDelegateCallback, this, d), _.bind(this._onDelegateCallback, this, d), "LocationManager",
@@ -113,7 +113,7 @@ LocationManager.prototype._registerDelegateCallbackId = function () {
  */
 LocationManager.prototype._onDelegateCallback = function (deferred, pluginResult) {
 
-	this.appendToDeviceLog('_onDelegateCallback() ' + JSON.stringify(pluginResult));
+	// this.appendToDeviceLog('_onDelegateCallback() ' + JSON.stringify(pluginResult));
 
 	if (pluginResult && _.isString(pluginResult['eventType'])) { // The native layer calling the DOM with a delegate event.
 		this._mapDelegateCallback(pluginResult);
@@ -136,7 +136,7 @@ LocationManager.prototype._onDelegateCallback = function (deferred, pluginResult
 LocationManager.prototype._mapDelegateCallback = function (pluginResult) {
 	var eventType = pluginResult['eventType']; // the Objective-C selector's name
 	
-	this.appendToDeviceLog('_mapDelegateCallback() found eventType ' + eventType);
+	// this.appendToDeviceLog('_mapDelegateCallback() found eventType ' + eventType);
 
 	if (_.isFunction(this.delegate[eventType])) {
 		this.delegate[eventType](pluginResult);
@@ -544,7 +544,7 @@ LocationManager.prototype.enableDebugLogs = function() {
  * is expected to be equivalent to the one provided in the original call.
  */
 LocationManager.prototype.appendToDeviceLog = function(message) {
-	return this._promisedExec('appendToDeviceLog', [message], []);
+	// return this._promisedExec('appendToDeviceLog', [message], []);
 };
 
 var locationManager = new LocationManager();
