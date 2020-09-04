@@ -32,7 +32,7 @@
     [self pauseEventPropagationToDom]; // Before the DOM is loaded we'll just keep collecting the events and fire them later.
 
     [self initLocationManager];
-    [self initPeripheralManager];
+    // [self initPeripheralManager]; // not needed if we don't want to use the device as a beacon
     
     self.debugLogEnabled = true;
     self.debugNotificationsEnabled = false;
